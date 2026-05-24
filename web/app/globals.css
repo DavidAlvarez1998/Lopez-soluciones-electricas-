@@ -1,0 +1,73 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --color-navy: #030f23;
+  --color-navy-2: #071a3e;
+  --color-blue: #1354a8;
+  --color-blue-bright: #1e6fd4;
+  --color-blue-glow: #3b8cff;
+  --color-accent: #f04e2b;
+  --color-off-white: #f5f8ff;
+  --color-brand-gray: #8fa3c0;
+}
+
+@layer base {
+  * {
+    box-sizing: border-box;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+
+  .glass {
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+  }
+
+  /* Scroll reveal */
+  .reveal {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.7s ease, transform 0.7s ease;
+  }
+
+  .reveal.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* ── Keyframe animations ── */
+
+@keyframes auroraFloat {
+  0%   { transform: translate(0, 0) scale(1); }
+  33%  { transform: translate(10%, 15%) scale(1.1); }
+  66%  { transform: translate(-5%, 20%) scale(0.9); }
+  100% { transform: translate(0, 0) scale(1); }
+}
+
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(24px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 0.12; }
+  50%       { opacity: 0.22; }
+}
+
+@keyframes waPulse {
+  0%, 100% { box-shadow: 0 6px 24px rgba(37, 211, 102, 0.4); }
+  50%       { box-shadow: 0 6px 40px rgba(37, 211, 102, 0.65), 0 0 0 10px rgba(37, 211, 102, 0.1); }
+}

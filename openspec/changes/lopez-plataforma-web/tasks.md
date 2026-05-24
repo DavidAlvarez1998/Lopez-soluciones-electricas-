@@ -38,34 +38,34 @@ Chain strategy: size-exception
 
 ## Phase 1: Setup inicial
 
-- [ ] 1.1 Crear proyecto Next.js 14 con `create-next-app --typescript --tailwind --app --src-dir false` en `C:\Users\adjua\Desktop\LOPEZ`. Archivos: `package.json`, `next.config.js`, `tsconfig.json`.
-- [ ] 1.2 Instalar dependencias: `@supabase/supabase-js @supabase/ssr @react-pdf/renderer zod`. Archivo: `package.json`.
-- [ ] 1.3 Configurar `tailwind.config.ts` con paleta de colores custom (navy, blue, accent, off-white, gray) y tipografía Barlow/Barlow Condensed.
-- [ ] 1.4 Configurar `app/layout.tsx` con `next/font` (Barlow + Barlow Condensed), variables CSS `--font-barlow` y `--font-barlow-condensed`, metadata global.
-- [ ] 1.5 Crear `app/globals.css` con directivas Tailwind y tokens raíz.
-- [ ] 1.6 Crear `.env.local.example` con `NEXT_PUBLIC_SUPABASE_URL`, `NEXT_PUBLIC_SUPABASE_ANON_KEY`, `SUPABASE_SERVICE_ROLE_KEY`.
-- [ ] 1.7 Crear `lib/constants/empresa.ts` con NIT, titular (Carlos Andrés López Osorio), CC (1.088.252.549), email, teléfono, bancos (Davivienda 127070034526, Bancolombia 27054262871).
-- [ ] 1.8 Crear `lib/formatters/currency.ts` (COP "$ 1.234.567"), `lib/formatters/date.ts` ("23 de mayo de 2026"), `lib/formatters/consecutivo.ts`.
-- [ ] 1.9 Agregar regla ESLint `no-restricted-imports` que prohíbe importar `lib/supabase/admin` desde archivos `'use client'` o carpetas `app/(public)/` y `components/public/`. Archivo: `.eslintrc.json`.
+- [x] 1.1 Crear proyecto Next.js 14 con `create-next-app --typescript --tailwind --app --src-dir false` en `C:\Users\adjua\Desktop\LOPEZ`. Archivos: `package.json`, `next.config.js`, `tsconfig.json`.
+- [x] 1.2 Instalar dependencias: `@supabase/supabase-js @supabase/ssr @react-pdf/renderer zod`. Archivo: `package.json`.
+- [x] 1.3 Configurar `tailwind.config.ts` con paleta de colores custom (navy, blue, accent, off-white, gray) y tipografía Barlow/Barlow Condensed.
+- [x] 1.4 Configurar `app/layout.tsx` con `next/font` (Barlow + Barlow Condensed), variables CSS `--font-barlow` y `--font-barlow-condensed`, metadata global.
+- [x] 1.5 Crear `app/globals.css` con directivas Tailwind y tokens raíz.
+- [x] 1.6 Crear `.env.local.example` con `NEXT_PUBLIC_SUPABASE_URL`, `NEXT_PUBLIC_SUPABASE_ANON_KEY`, `SUPABASE_SERVICE_ROLE_KEY`.
+- [x] 1.7 Crear `lib/constants/empresa.ts` con NIT, titular (Carlos Andrés López Osorio), CC (1.088.252.549), email, teléfono, bancos (Davivienda 127070034526, Bancolombia 27054262871).
+- [x] 1.8 Crear `lib/formatters/currency.ts` (COP "$ 1.234.567"), `lib/formatters/date.ts` ("23 de mayo de 2026"), `lib/formatters/consecutivo.ts`.
+- [x] 1.9 Agregar regla ESLint `no-restricted-imports` que prohíbe importar `lib/supabase/admin` desde archivos `'use client'` o carpetas `app/(public)/` y `components/public/`. Archivo: `.eslintrc.json`.
 
 ---
 
 ## Phase 2: Supabase — base de datos y storage
 
-- [ ] 2.1 Crear `supabase/migrations/0001_init.sql`: extensiones (`pgcrypto`, `unaccent`, `pg_trgm`), enums, tablas (`clientes`, `solicitudes_publicas`, `cotizaciones`, `items_cotizacion`, `cuentas_cobro`, `items_cuenta_cobro`, `adjuntos`), índices, triggers `updated_at` y recálculo de totales.
-- [ ] 2.2 Crear `supabase/migrations/0002_sequences.sql`: tabla `consecutivos_anuales`, función `next_consecutivo(p_tipo text)`, función `buscar_clientes(q text, lim int)` con `pg_trgm`.
-- [ ] 2.3 Crear `supabase/migrations/0003_rls.sql`: habilitar RLS en todas las tablas, policy INSERT anon en `solicitudes_publicas`, policies full-access authenticated en el resto, grants a `next_consecutivo` y `buscar_clientes`.
-- [ ] 2.4 Crear `supabase/migrations/0004_storage.sql`: bucket `adjuntos` (privado), policies storage para `authenticated` (SELECT, INSERT, UPDATE, DELETE).
-- [ ] 2.5 Crear `supabase/seed.sql` con 2-3 clientes y 1 solicitud de prueba (datos ficticios). Archivo: `supabase/seed.sql`.
-- [ ] 2.6 Crear `lib/supabase/server.ts` (`createServerClient` para Server Components y Server Actions), `lib/supabase/client.ts` (`createBrowserClient`), `lib/supabase/middleware.ts` (para el middleware Next.js), `lib/supabase/admin.ts` (service role, solo server).
+- [x] 2.1 Crear `supabase/migrations/0001_init.sql`: extensiones (`pgcrypto`, `unaccent`, `pg_trgm`), enums, tablas (`clientes`, `solicitudes_publicas`, `cotizaciones`, `items_cotizacion`, `cuentas_cobro`, `items_cuenta_cobro`, `adjuntos`), índices, triggers `updated_at` y recálculo de totales.
+- [x] 2.2 Crear `supabase/migrations/0002_sequences.sql`: tabla `consecutivos_anuales`, función `next_consecutivo(p_tipo text)`, función `buscar_clientes(q text, lim int)` con `pg_trgm`.
+- [x] 2.3 Crear `supabase/migrations/0003_rls.sql`: habilitar RLS en todas las tablas, policy INSERT anon en `solicitudes_publicas`, policies full-access authenticated en el resto, grants a `next_consecutivo` y `buscar_clientes`.
+- [x] 2.4 Crear `supabase/migrations/0004_storage.sql`: bucket `adjuntos` (privado), policies storage para `authenticated` (SELECT, INSERT, UPDATE, DELETE).
+- [x] 2.5 Crear `supabase/seed.sql` con 2-3 clientes y 1 solicitud de prueba (datos ficticios). Archivo: `supabase/seed.sql`.
+- [x] 2.6 Crear `lib/supabase/server.ts` (`createServerClient` para Server Components y Server Actions), `lib/supabase/client.ts` (`createBrowserClient`), `lib/supabase/middleware.ts` (para el middleware Next.js), `lib/supabase/admin.ts` (service role, solo server).
 
 ---
 
 ## Phase 3: Auth — middleware y login
 
-- [ ] 3.1 Crear `middleware.ts` en la raíz: intercepta `/admin/*`, excluye `/admin/login`, redirige a `/admin/login?next=...` si no hay sesión, redirige a `/admin` si hay sesión en la login page. Exportar `config.matcher`.
-- [ ] 3.2 Crear `app/admin/login/page.tsx` (Client Component): form email + password, llamada a `supabase.auth.signInWithPassword`, redirect a `next` o `/admin`, mostrar "Credenciales incorrectas" en error.
-- [ ] 3.3 Agregar logout en `app/admin/layout.tsx`: llama `supabase.auth.signOut()` + redirect a `/admin/login`. El layout también hace `getUser()` server-side como segunda línea de defensa.
+- [x] 3.1 Crear `middleware.ts` en la raíz: intercepta `/admin/*`, excluye `/admin/login`, redirige a `/admin/login?next=...` si no hay sesión, redirige a `/admin` si hay sesión en la login page. Exportar `config.matcher`.
+- [x] 3.2 Crear `app/admin/login/page.tsx` (Client Component): form email + password, llamada a `supabase.auth.signInWithPassword`, redirect a `next` o `/admin`, mostrar "Credenciales incorrectas" en error.
+- [x] 3.3 Agregar logout en `app/admin/layout.tsx`: llama `supabase.auth.signOut()` + redirect a `/admin/login`. El layout también hace `getUser()` server-side como segunda línea de defensa.
 
 ---
 
@@ -97,47 +97,47 @@ Chain strategy: size-exception
 
 ## Phase 6: Dashboard admin
 
-- [ ] 6.1 Crear `app/admin/page.tsx` (Server Component): 4 queries Supabase paralelas para métricas (solicitudes nuevas, cotizaciones pendientes, cuentas de cobro pendientes, total cobrado en el mes). Manejo de zero state. Links a módulos filtrados.
+- [x] 6.1 Crear `app/admin/page.tsx` (Server Component): 4 queries Supabase paralelas para métricas (solicitudes nuevas, cotizaciones pendientes, cuentas de cobro pendientes, total cobrado en el mes). Manejo de zero state. Links a módulos filtrados.
 
 ---
 
 ## Phase 7: Módulo Clientes
 
-- [ ] 7.1 Crear `lib/validators/cliente.ts` con schema Zod para create/update cliente.
-- [ ] 7.2 Crear `app/admin/actions/clientes.ts`: Server Actions `createCliente`, `updateCliente`, `deleteCliente` (previene borrar si hay documentos vinculados), `searchClientes`.
-- [ ] 7.3 Crear `components/admin/ClienteAutocomplete.tsx` (Client Component): debounce 250ms, llama RPC `buscar_clientes`, dropdown de resultados, callback `onSelect` que popula campos del form padre.
-- [ ] 7.4 Crear `app/admin/clientes/page.tsx` (Server Component): lista de clientes con búsqueda básica + link a nuevo/editar.
-- [ ] 7.5 Crear `app/admin/clientes/nuevo/page.tsx`: form con Client Component incrustado, llama `createCliente` action.
-- [ ] 7.6 Crear `app/admin/clientes/[id]/page.tsx`: carga cliente server-side, form de edición, botón eliminar con `ConfirmDialog`.
+- [x] 7.1 Crear `lib/validators/cliente.ts` con schema Zod para create/update cliente. [Inline en lib/actions/clientes.ts]
+- [x] 7.2 Crear `lib/actions/clientes.ts`: Server Actions `crearCliente`, `actualizarCliente`, `eliminarCliente` (previene borrar si hay documentos vinculados), `buscarClientes`.
+- [x] 7.3 `components/admin/ClienteAutocomplete.tsx` — ya existía, reutilizado sin cambios.
+- [x] 7.4 Crear `app/admin/clientes/page.tsx` (Server Component): lista de clientes con búsqueda básica + link a nuevo/editar, paginación 25/page.
+- [x] 7.5 Crear `app/admin/clientes/nuevo/page.tsx`: form Client Component, llama `crearCliente` action.
+- [x] 7.6 Crear `app/admin/clientes/[id]/editar/page.tsx`: carga cliente, form de edición, confirmación eliminar.
 
 ---
 
 ## Phase 8: Módulo Solicitudes
 
-- [ ] 8.1 Crear `app/admin/actions/solicitudes.ts`: Server Actions `updateEstadoSolicitud` (descartada/atendida).
-- [ ] 8.2 Crear `app/admin/solicitudes/page.tsx` (Server Component): lista filtrable por estado (nuevas/atendidas/descartadas), columnas nombre/teléfono/descripción/fecha/estado.
-- [ ] 8.3 Crear `app/admin/solicitudes/[id]/page.tsx`: detalle de solicitud, botón "Crear cotización" (redirige a `/admin/cotizaciones/nueva?solicitud_id={id}`), botón "Descartar" con `ConfirmDialog`.
+- [x] 8.1 Crear `lib/actions/solicitudes-admin.ts`: Server Actions `listarSolicitudes`, `actualizarEstadoSolicitud`, `convertirSolicitudACotizacion`.
+- [x] 8.2 Crear `app/admin/solicitudes/page.tsx` (Server Component): lista filtrable por estado, badge contador de nuevas.
+- [x] 8.3 Crear `app/admin/solicitudes/[id]/page.tsx`: detalle + acciones (crear cotización, revisar, descartar, reactivar).
 
 ---
 
 ## Phase 9: Módulo Cotizaciones
 
-- [ ] 9.1 Crear `lib/validators/cotizacion.ts` con schema Zod para create/update.
-- [ ] 9.2 Crear `components/admin/InvoiceTable.tsx` (Client Component): tabla editable de items con descripción, cantidad, valor_unidad; cálculo en vivo de valor_total y total; agregar/quitar filas.
-- [ ] 9.3 Crear `app/admin/actions/cotizaciones.ts`: Server Actions `createCotizacion` (con `next_consecutivo('COT')` en la misma transacción), `updateCotizacion`, `deleteCotizacion`, `cambiarEstadoCotizacion`, `convertirAcuentaCobro`.
-- [ ] 9.4 Crear `app/admin/cotizaciones/page.tsx` (Server Component): lista con consecutivo/cliente/estado/fecha/total, link a detalle.
-- [ ] 9.5 Crear `app/admin/cotizaciones/nueva/page.tsx` (Client Component): `ClienteAutocomplete`, `InvoiceTable`, campo concepto, llama `createCotizacion`. Si viene con `?solicitud_id`, pre-pobla datos de la solicitud.
-- [ ] 9.6 Crear `app/admin/cotizaciones/[id]/page.tsx` (Server Component shell + Client actions): datos SSR, botones cambiar estado, botón "Generar cuenta de cobro" (solo si `aprobada`), `PDFDownloadButton`, `ShareButtons`, lista de adjuntos.
+- [x] 9.1 Schema Zod para cotizaciones inline en `lib/actions/cotizaciones.ts`.
+- [x] 9.2 `components/admin/InvoiceTableCotizacion.tsx` — ya existía, reutilizado.
+- [x] 9.3 Crear `lib/actions/cotizaciones.ts`: `crearCotizacion` (next_consecutivo atomico), `actualizarCotizacion`, `actualizarEstadoCotizacion`, `eliminarCotizacion`, `obtenerCotizacion`, `vincularCuentaCobro`.
+- [x] 9.4 Crear `app/admin/cotizaciones/page.tsx` (Server Component): lista con filtros por estado.
+- [x] 9.5 Crear `app/admin/cotizaciones/nuevo/page.tsx` (Client Component): ClienteAutocomplete + InvoiceTableCotizacion, pre-carga desde solicitud_id.
+- [x] 9.6 Crear `app/admin/cotizaciones/[id]/page.tsx` (Client Component): detalle/editar, cambio estado, generar CC, placeholders PDF/WhatsApp, FileUpload adjuntos.
 
 ---
 
 ## Phase 10: Módulo Cuentas de Cobro
 
-- [ ] 10.1 Crear `lib/validators/cuenta-cobro.ts` con schema Zod para create/update.
-- [ ] 10.2 Crear `app/admin/actions/cuentas-cobro.ts`: Server Actions `createCuentaCobro` (con `next_consecutivo('COB')`), `updateCuentaCobro`, `deleteCuentaCobro`, `marcarPagada` (establece `fecha_pago = NOW()`), `revertirPagada` (borra `fecha_pago`).
-- [ ] 10.3 Crear `app/admin/cuentas-cobro/page.tsx` (Server Component): lista con consecutivo/cliente/total/estado/fecha_pago.
-- [ ] 10.4 Crear `app/admin/cuentas-cobro/nueva/page.tsx` (Client Component): `ClienteAutocomplete`, `InvoiceTable`, concepto, observaciones, `cotizacion_id` opcional (pre-poblado si viene de "Generar cuenta de cobro").
-- [ ] 10.5 Crear `app/admin/cuentas-cobro/[id]/page.tsx` (Server Component shell + Client actions): datos SSR, botón marcar pagada con `ConfirmDialog`, botón revertir, `PDFDownloadButton`, `ShareButtons`, lista de adjuntos.
+- [x] 10.1 Schema Zod para cuentas de cobro inline en `lib/actions/cuentas-cobro.ts`.
+- [x] 10.2 Crear `lib/actions/cuentas-cobro.ts`: `crearCuentaCobro` (next_consecutivo), `actualizarCuentaCobro`, `marcarPagada`, `marcarPendiente`, `obtenerCuentaCobro`, `crearDesdeCotizacion`, `eliminarCuentaCobro`.
+- [x] 10.3 Crear `app/admin/cuentas-cobro/page.tsx` (Server Component): lista con filtros pendiente/pagada.
+- [x] 10.4 Crear `app/admin/cuentas-cobro/nuevo/page.tsx` (Client Component): pre-carga desde cotizacion_id.
+- [x] 10.5 Crear `app/admin/cuentas-cobro/[id]/page.tsx` (Client Component): detalle con marcar pagada (date picker), revertir, datos bancarios EMPRESA, placeholders PDF/WhatsApp, FileUpload.
 
 ---
 

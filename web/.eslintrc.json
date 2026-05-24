@@ -1,0 +1,34 @@
+{
+  "extends": ["next/core-web-vitals", "next/typescript"],
+  "rules": {
+    "no-restricted-imports": [
+      "error",
+      {
+        "patterns": [
+          {
+            "group": ["*/lib/supabase/admin*", "**/lib/supabase/admin*"],
+            "message": "admin (service_role) client must NOT be imported from Client Components or public routes."
+          }
+        ]
+      }
+    ]
+  },
+  "overrides": [
+    {
+      "files": ["app/(public)/**/*", "components/public/**/*"],
+      "rules": {
+        "no-restricted-imports": [
+          "error",
+          {
+            "patterns": [
+              {
+                "group": ["*/lib/supabase/admin*", "**/lib/supabase/admin*"],
+                "message": "admin (service_role) client must NOT be imported from public routes."
+              }
+            ]
+          }
+        ]
+      }
+    }
+  ]
+}

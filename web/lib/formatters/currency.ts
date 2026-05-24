@@ -1,0 +1,12 @@
+/**
+ * Format a number as Colombian Pesos.
+ * Example: 1234567 → "$ 1.234.567"
+ */
+export function formatCOP(value: number): string {
+  return new Intl.NumberFormat("es-CO", {
+    style: "currency",
+    currency: "COP",
+    minimumFractionDigits: 0,
+    maximumFractionDigits: 0,
+  }).format(value);
+}
