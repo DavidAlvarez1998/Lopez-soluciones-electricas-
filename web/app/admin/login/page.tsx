@@ -26,7 +26,7 @@ export default function LoginPage() {
       <div className="w-full max-w-md">
         {/* Logo */}
         <div className="text-center mb-8">
-          <h1 className="font-display text-3xl font-bold text-off-white tracking-wide">
+          <h1 className="font-barlow-condensed text-3xl font-bold text-off-white tracking-wide">
             LÓPEZ
           </h1>
           <p className="text-blue-glow text-sm font-semibold tracking-widest uppercase mt-1">

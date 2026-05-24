@@ -33,8 +33,9 @@ CREATE TABLE clientes (
   CONSTRAINT clientes_nombre_chk CHECK (length(trim(nombre_razon_social)) > 0)
 );
 
+-- Índice trigram para búsqueda por nombre (sin unaccent para evitar problemas de schema)
 CREATE INDEX clientes_nombre_trgm_idx
-  ON clientes USING GIN (lower(unaccent(nombre_razon_social)) gin_trgm_ops);
+  ON clientes USING GIN (lower(nombre_razon_social) gin_trgm_ops);
 
 CREATE INDEX clientes_documento_idx ON clientes (numero_documento);
 CREATE INDEX clientes_activo_idx ON clientes (activo) WHERE activo = TRUE;

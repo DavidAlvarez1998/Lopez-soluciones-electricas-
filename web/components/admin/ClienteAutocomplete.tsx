@@ -2,6 +2,7 @@
 
 import { useState, useEffect, useRef } from 'react';
 
+
 export interface Cliente {
   id: string;
   nombre_razon_social: string;

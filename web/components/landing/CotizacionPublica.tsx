@@ -6,11 +6,10 @@ import { insertarSolicitudPublica } from '@/lib/actions/solicitudes';
 interface LineItem {
   id: string;
   descripcion: string;
-  valor: string;
 }
 
 function newItem(): LineItem {
-  return { id: crypto.randomUUID(), descripcion: '', valor: '' };
+  return { id: crypto.randomUUID(), descripcion: '' };
 }
 
 export default function CotizacionPublica() {
@@ -32,8 +31,8 @@ export default function CotizacionPublica() {
   const removeItem = (id: string) =>
     setItems((prev) => prev.filter((i) => i.id !== id));
 
-  const updateItem = (id: string, field: 'descripcion' | 'valor', value: string) =>
-    setItems((prev) => prev.map((i) => (i.id === id ? { ...i, [field]: value } : i)));
+  const updateItem = (id: string, value: string) =>
+    setItems((prev) => prev.map((i) => (i.id === id ? { ...i, descripcion: value } : i)));
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -56,7 +55,7 @@ export default function CotizacionPublica() {
         contacto: formData.contacto || undefined,
         telefono: formData.telefono || undefined,
         direccion: formData.direccion || undefined,
-        items: validItems.map((i) => ({ descripcion: i.descripcion, valor: i.valor })),
+        items: validItems.map((i) => ({ descripcion: i.descripcion })),
       });
 
       if (result.success) {
@@ -78,7 +77,7 @@ export default function CotizacionPublica() {
     if (formData.direccion) text += `Dir: ${formData.direccion}. `;
     text += '\nServicios a cotizar:\n';
     validItems.forEach((item, idx) => {
-      text += `${idx + 1}. ${item.descripcion}${item.valor ? ` - ${item.valor}` : ''}\n`;
+      text += `${idx + 1}. ${item.descripcion}\n`;
     });
     return `https://wa.me/573004513435?text=${encodeURIComponent(text)}`;
   };
@@ -279,48 +278,34 @@ export default function CotizacionPublica() {
               {/* Items table */}
               <div className="mt-5">
                 <div
-                  className="grid text-blue-glow text-xs font-extrabold uppercase tracking-widest px-5 py-3 rounded-t-lg border border-b-0 border-white/10"
-                  style={{
-                    gridTemplateColumns: '1fr 120px',
-                    background: 'rgba(3,15,35,0.6)',
-                  }}
+                  className="text-blue-glow text-xs font-extrabold uppercase tracking-widest px-5 py-3 rounded-t-lg border border-b-0 border-white/10"
+                  style={{ background: 'rgba(3,15,35,0.6)' }}
                 >
-                  <span>Descripción del Servicio</span>
-                  <span className="text-right">Valor</span>
+                  Descripción del Servicio
                 </div>
                 <div className="border border-white/10 rounded-b-lg overflow-hidden" style={{ background: 'rgba(255,255,255,0.02)' }}>
                   {items.map((item) => (
                     <div
                       key={item.id}
-                      className="grid border-b border-white/10 last:border-b-0 group relative"
-                      style={{ gridTemplateColumns: '1fr 120px' }}
+                      className="flex items-center border-b border-white/10 last:border-b-0 group relative"
                     >
                       <input
                         type="text"
                         value={item.descripcion}
-                        onChange={(e) => updateItem(item.id, 'descripcion', e.target.value)}
+                        onChange={(e) => updateItem(item.id, e.target.value)}
                         placeholder="Descripción del servicio..."
                         className="bg-transparent border-none px-5 py-3 text-off-white text-sm outline-none focus:bg-blue-glow/10 w-full"
                       />
-                      <div className="flex items-center border-l border-white/10">
-                        <input
-                          type="text"
-                          value={item.valor}
-                          onChange={(e) => updateItem(item.id, 'valor', e.target.value)}
-                          placeholder="$ 0"
-                          className="bg-transparent border-none px-3 py-3 text-blue-glow font-semibold text-sm outline-none focus:bg-blue-glow/10 text-right w-full"
-                        />
-                        {items.length > 1 && (
-                          <button
-                            type="button"
-                            onClick={() => removeItem(item.id)}
-                            className="hidden group-hover:flex items-center justify-center w-6 h-6 text-accent text-lg leading-none absolute right-1 top-1/2 -translate-y-1/2"
-                            aria-label="Eliminar ítem"
-                          >
-                            ×
-                          </button>
-                        )}
-                      </div>
+                      {items.length > 1 && (
+                        <button
+                          type="button"
+                          onClick={() => removeItem(item.id)}
+                          className="hidden group-hover:flex items-center justify-center w-8 h-8 text-accent text-xl leading-none mr-2 flex-shrink-0"
+                          aria-label="Eliminar ítem"
+                        >
+                          ×
+                        </button>
+                      )}
                     </div>
                   ))}
                 </div>

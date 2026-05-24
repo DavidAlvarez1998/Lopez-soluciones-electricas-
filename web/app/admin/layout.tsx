@@ -1,4 +1,3 @@
-import { redirect } from "next/navigation";
 import { createClient } from "@/lib/supabase/server";
 import { Sidebar } from "@/components/admin/Sidebar";
 import { Topbar } from "@/components/admin/Topbar";
@@ -15,9 +14,10 @@ export default async function AdminLayout({
     data: { user },
   } = await supabase.auth.getUser();
 
-  // Defense in depth: middleware already handles this, but layout double-checks.
+  // Sin sesión: el middleware ya redirige. El layout solo renderiza
+  // los children para no interferir con la página de login.
   if (!user) {
-    redirect("/admin/login");
+    return <>{children}</>;
   }
 
   return (
