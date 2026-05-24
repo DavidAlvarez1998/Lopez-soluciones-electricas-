@@ -11,7 +11,6 @@ const SolicitudSchema = z.object({
     .array(
       z.object({
         descripcion: z.string().min(1),
-        valor: z.string().max(50),
       })
     )
     .min(1, 'Debe incluir al menos un ítem'),
@@ -49,7 +48,7 @@ export async function insertarSolicitudPublica(
 
     // Build a description from items
     const descripcion = parsed.data.items
-      .map((item) => `${item.descripcion}${item.valor ? ` (${item.valor})` : ''}`)
+      .map((item) => item.descripcion)
       .join('\n');
 
     const { error } = await supabase.from('solicitudes_publicas').insert({
