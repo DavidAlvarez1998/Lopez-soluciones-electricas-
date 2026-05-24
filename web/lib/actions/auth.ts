@@ -17,7 +17,7 @@ export async function loginAction(
   });
 
   if (error) {
-    return { error: "Credenciales incorrectas. Verificá tu email y contraseña." };
+    return { error: error.message };
   }
 
   redirect("/admin");
